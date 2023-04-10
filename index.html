@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Icons -->
+
+    <link
+      rel="stylesheet"
+      href="./assets/css/bootstrap/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <!-- Toast -->
+    <link rel="stylesheet" href="./assets/toastr/toastr.min.css" />
+    <!-- toastr -->
+
+    <title>Coffe Shop</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="text-center mt-5">
+        <h1>
+          Dispensadora de cafe
+          <i class="fa-solid fa-mug-hot fa-beat-fade"></i>
+        </h1>
+      </div>
+
+      <div class="row">
+        <div class="col-4">
+          <div>
+            <img
+              src="./assets/img/dispensadora.png"
+              class="img-fluid"
+              alt="Dispensadora.png"
+            />
+          </div>
+
+          <div class="card px-4">
+            <div class="d-flex gap-2">
+              <h6>Vasos 3 Oz Disponibles:</h6>
+              <p id="vasos3oz_D"></p>
+            </div>
+            <div class="d-flex gap-2">
+              <h6>Vasos 5 Oz Disponibles:</h6>
+              <p id="vasos5oz_D"></p>
+            </div>
+            <div class="d-flex gap-2">
+              <h6>Vasos 7 Oz Disponibles:</h6>
+              <p id="vasos7oz_D"></p>
+            </div>
+            <div class="d-flex gap-2">
+              <h6>Cafe disponible:</h6>
+              <p id="cafe_D"></p>
+            </div>
+            <div class="d-flex gap-2">
+              <h6>Azucar disponible:</h6>
+              <p id="azucar_D"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-8 h-25">
+          <section class="d-flex justify-content-start mb-2">
+            <div class="card w-50">
+              <img
+                src="./assets/img/vasos.png"
+                class="rounded mx-auto d-block vasosImg"
+                alt="vasos.png"
+              />
+              <div class="card-body">
+                <h5 class="card-title">1- Seleccione un vaso</h5>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="Vasos"
+                  placeholder="3 Oz / 5 Oz / 7 Oz (Solo especifique el numero)"
+                  required
+                />
+
+                <button class="btn btn-primary my-2" id="paso1">Aceptar</button>
+              </div>
+            </div>
+          </section>
+
+          <section class="d-flex justify-content-start mb-2">
+            <div class="card w-50">
+              <img
+                src="./assets/img/cafe.png"
+                class="rounded mx-auto d-block vasosImg"
+                alt="vasos.png"
+              />
+              <div class="card-body">
+                <h5 class="card-title">2-Servir Café</h5>
+                <input type="text" class="form-control" id="cafe" required />
+                <button class="btn btn-primary my-2" id="paso2">
+                  Llenar vaso
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <section class="d-flex justify-content-start mb-2">
+            <div class="card w-50">
+              <img
+                src="./assets/img/azucarero.png"
+                class="rounded mx-auto d-block vasosImg"
+                alt="vasos.png"
+              />
+              <div class="card-body">
+                <h5 class="card-title">
+                  3- ¿Cuantas cucharadas de azucar necesita?
+                </h5>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="azucar"
+                  id="azucar"
+                  required
+                />
+                <button class="btn btn-primary my-2" id="paso3">
+                  Servir azucar
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <section class="d-flex flex-column justify-content-start mb-2">
+            <div class="mb-5">
+              <button class="btn btn-primary" id="paso4">Preparar cafe</button>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <script src="./assets/jquery/jquery-3.6.4.min.js"></script>
+    <script src="./assets/toastr/toastr.min.js"></script>
+    <script src="./assets/js/bootstrap/js/bootstrap.min.js"></script>
+    <script type="module" src="./assets/js/app.js"></script>
+  </body>
+</html>
