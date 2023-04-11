@@ -1,6 +1,5 @@
 export default class Vasos {
   cantidadVasos;
-  cantidad;
 
   //Constructor.
   constructor(cantidadVasos) {
@@ -28,7 +27,6 @@ export default class Vasos {
     if (this.cantidadVasos < cantidadVasos) {
       throw new Error("No tenemos la cantidad de vasos que esta solicitando");
     }
-
     let disponible = this.cantidadVasos - cantidadVasos;
     this.setCantidaVasos(disponible);
   }

@@ -1,28 +1,4 @@
-import Vasos from "./modules/vasos.js";
-import Azucarero from "./modules/azucarero.js";
-import Cafetera from "./modules/Cafetera.js";
-
-export default class MaquinaCafe {
-  vasos3Oz = new Vasos(50);
-  vasos5Oz = new Vasos(50);
-  vasos7Oz = new Vasos(50);
-  cafetera = new Cafetera(50);
-  azucarero = new Azucarero(50);
-
-  getTipoVaso(tipoVaso) {
-    if (tipoVaso === 3) {
-      return this.vasos3Oz;
-    } else if (tipoVaso === 5) {
-      return this.vasos5Oz;
-    } else {
-      return this.vasos7Oz;
-    }
-  }
-
-  getVasoCafe(tipoVaso, ServirCafe, servirAzucar) {
-    return "Puede retirar su cafe de la maquina";
-  }
-}
+import MaquinaCafe from "./modules/maquinaCafe.js";
 
 const maquinaCafe = new MaquinaCafe();
 let tipoVaso;
@@ -61,14 +37,6 @@ const setDisponible = () => {
   document.getElementById("azucar_D").innerHTML +=
     " " + maquinaCafe.azucarero.getCantidadAzucar();
 };
-
-function clean() {
-  document.getElementById("vasos3oz_D").innerHTML = "";
-  document.getElementById("vasos5oz_D").innerHTML = "";
-  document.getElementById("vasos7oz_D").innerHTML = "";
-  document.getElementById("cafe_D").innerHTML = "";
-  document.getElementById("azucar_D").innerHTML = "";
-}
 
 function TipoVaso() {
   let verificar;
@@ -134,7 +102,7 @@ function ServirCafe() {
     throw new Error("la cantidad no corresponde al tipo de vaso");
   }
 
-  if (inputCafe.value > maquinaCafe.cafetera.getCantidadCafe) {
+  if (inputCafe.value > maquinaCafe.cafetera.getCantidadCafe()) {
     toastr.error(
       "La maquina no tiene la cantidad de cafe solicitada",
       "Error",
@@ -172,7 +140,22 @@ function ServirCafe() {
 function ServirAzucar() {
   console.log(inputAzucar.value);
 
-  if (parseInt(inputAzucar.value) > maquinaCafe.azucarero.getCantidadAzucar) {
+  if (inputAzucar == undefined || inputAzucar == "") {
+    toastr.error(
+      "debe especificar el cantidad de azucar, en caso de no querer azucar, favor colocar un 0",
+      "Error",
+      {
+        timeOut: 2000,
+        positionClass: "toast-top-right",
+        Onclick: null,
+        closeButton: true,
+      }
+    );
+
+    throw new Error("debe especificar el cantidad de azucar");
+  }
+
+  if (parseInt(inputAzucar.value) > maquinaCafe.azucarero.getCantidadAzucar()) {
     toastr.error(
       "La maquina no tiene la cantidad de azucar solicitada",
       "Error",
@@ -199,6 +182,7 @@ function ServirAzucar() {
 
   clean();
   setDisponible();
+  paso4.classList.remove("d-none");
 
   toastr.success(`${servirAzucar}` + " cucharadas de azucar", `Ok`, {
     timeOut: 2000,
@@ -219,7 +203,6 @@ function CafeListo() {
       Onclick: null,
       closeButton: true,
     });
-
     Reset();
   } catch (err) {
     console.log(err);
@@ -238,6 +221,20 @@ function Reset() {
   inputAzucar.value = "";
   inputAzucar.disabled = false;
   paso3.disabled = false;
+
+  tipoVaso = "";
+  servirCafe = "";
+  servirAzucar = "";
+
+  paso4.classList.add("d-none");
+}
+
+function clean() {
+  document.getElementById("vasos3oz_D").innerHTML = "";
+  document.getElementById("vasos5oz_D").innerHTML = "";
+  document.getElementById("vasos7oz_D").innerHTML = "";
+  document.getElementById("cafe_D").innerHTML = "";
+  document.getElementById("azucar_D").innerHTML = "";
 }
 
 setDisponible();
